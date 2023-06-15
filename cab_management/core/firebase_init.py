@@ -10,4 +10,5 @@ firebase_admin.initialize_app(cred)
 def verify_user_token(token):
     decoded_token = auth.verify_id_token(token)
     uid = decoded_token["uid"]
-    return uid
+    role = decoded_token["role"]
+    return uid, role

@@ -20,6 +20,7 @@ import debug_toolbar
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("core/", include("core.urls")),
     path("manage/", include("management.urls")),
     path("car/", include("car.urls")),
     path("driver/", include("driver.urls")),

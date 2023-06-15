@@ -3,3 +3,18 @@ eyJhbGciOiJSUzI1NiIsImtpZCI6IjU0NWUyNDZjNTEwNmExMGQ2MzFiMTA0M2E3MWJiNTllNWJhMGM5
 
 
 {'iss': 'https://securetoken.google.com/afourathon-389204', 'aud': 'afourathon-389204', 'auth_time': 1686593426, 'user_id': '7un1yT900UWAThLcyEr950nvo4D2', 'sub': '7un1yT900UWAThLcyEr950nvo4D2', 'iat': 1686593426, 'exp': 1686597026, 'email': 'example@example.com', 'email_verified': False, 'firebase': {'identities': {'email': ['example@example.com']}, 'sign_in_provider': 'password'}, 'uid': '7un1yT900UWAThLcyEr950nvo4D2'}
+
+
+
+{'aud': 'afourathon-389204',
+ 'auth_time': 1686747503,
+ 'email': 'example@example.com',
+ 'email_verified': False,
+ 'exp': 1686751103,
+ 'firebase': {'identities': {'email': ['example@example.com']},
+              'sign_in_provider': 'password'},
+ 'iat': 1686747503,
+ 'iss': 'https://securetoken.google.com/afourathon-389204',
+ 'role': 'superuser',
+ 'sub': '7un1yT900UWAThLcyEr950nvo4D2',
+ 'user_id': '7un1yT900UWAThLcyEr950nvo4D2'}

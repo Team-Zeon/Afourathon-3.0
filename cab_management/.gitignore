@@ -1,2 +1,6 @@
+# Byte-Code
 *.pyc
+*.pyo
 *.json
+
+testing/

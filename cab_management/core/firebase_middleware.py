@@ -10,17 +10,19 @@ class FirebaseTokenMiddleware:
     def __call__(self, request):
         try:
             token = request.META.get("HTTP_AUTHORIZATION", "").split(" ")[1]
-            uid = verify_user_token(token)
+            uid, role = verify_user_token(token)
             User = get_user_model()
             user, created = User.objects.get_or_create(username=uid)
 
             if created:
-                group = Group.objects.get(name="Driver")
+                group = Group.objects.get(name=role)
+                user.is_staff = True if role in ["admin", "superadmin"] else False
                 user.groups.add(group)
+                user.save()
 
             request.user = user
         except Exception as e:
-            # print("Error occurred:", e)
+            print("Error occurred:", e)
             pass
 
         response = self.get_response(request)

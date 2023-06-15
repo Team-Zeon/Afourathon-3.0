@@ -3,8 +3,10 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from rest_framework import viewsets, status
 from rest_framework.response import Response
+from rest_framework.permissions import DjangoModelPermissions
 from car.models import CarProfile
 from driver.models import DriverProfile
+from core.permissions import FullDjangoModelPermissions
 from .models import Assignment
 from .serializers import AssignmentSerializer
 
@@ -13,6 +15,7 @@ from .serializers import AssignmentSerializer
 class AssignmentViewSet(viewsets.ModelViewSet):
     queryset = Assignment.objects.all()
     serializer_class = AssignmentSerializer
+    permission_classes = [FullDjangoModelPermissions]
 
     def create(self, request, *args, **kwargs):
         car_id = request.data.get("car")
@@ -114,37 +117,3 @@ class AssignmentViewSet(viewsets.ModelViewSet):
         driver.save()
 
         instance.delete()
-
-    # @action(detail=True, methods=["delete"])
-    # def delete_assignment(self, request, pk=None):
-    #     assignment = self.get_object()
-    #     car = assignment.car
-    #     driver = assignment.driver
-
-    #     car.available = True
-    #     car.save()
-    #     driver.available = True
-    #     driver.save()
-
-    #     self.perform_destroy(assignment)
-
-    #     return Response(status=status.HTTP_204_NO_CONTENT)
-
-    # @action(detail=True, methods=["put"])
-    # def update_assignment(self, request, pk=None):
-    #     assignment = self.get_object()
-    #     serializer = self.get_serializer(assignment, data=request.data)
-
-    #     if serializer.is_valid():
-    #         car = assignment.car
-    #         driver = assignment.driver
-
-    #         car.available = True
-    #         car.save()
-    #         driver.available = True
-    #         driver.save()
-
-    #         self.perform_update(serializer)
-    #         return Response(serializer.data, status=status.HTTP_200_OK)
-
-    #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

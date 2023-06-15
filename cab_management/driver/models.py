@@ -9,4 +9,4 @@ class DriverProfile(models.Model):
     mail_id = models.EmailField(max_length=255)
     phone_number = PhoneNumberField()
     available = models.BooleanField(default=True)
-    # user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
